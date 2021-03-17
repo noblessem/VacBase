@@ -17,6 +17,10 @@
             overflow-x:hidden;
             padding-top:20px;
         }
+        .links_todo{
+        color:black;
+        text-decoration:none;
+        }
         .sidenav a{
             padding: 6px 8px 6px 16px;
             text-decoration:none;
@@ -54,9 +58,12 @@
         <div id = "content" class="main">
             <div class="row justify-content-center">
                 <div class="col-8">
+
+                    {% if user.is_authenticated %}
+                    {% block header %}
                     <h1 class="mt-2">My Site</h1>
                     <hr class="mt-0 mb-4">
-                    {% if user.is_authenticated %}
+                    {% endblock %}
                         {% block content %}
                         {% endblock %}
                     {% else %}

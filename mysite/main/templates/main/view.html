@@ -2,9 +2,14 @@
 {% block title %}
 View
 {% endblock %}
+{% block header %}
+<h1>Your work to do list is showing below</h1>
+    <hr class="mt-0 mb-4">
+{% endblock %}
 {% block content %}
+
     {% for td in user.todolist.all %}
-        <p><a href="/{{td.id}}">{{td.name}}</a></p>
+        <h2><a class="links_todo" href="/{{td.id}}">{{td.name}}</a></h2>
     {% endfor %}
 {% endblock %}
 

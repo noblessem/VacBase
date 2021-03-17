@@ -2,9 +2,13 @@
 {% block title %}
 My Profile
 {% endblock %}
+{% block header %}
+    <h1>Profile</h1>
+    <hr class="mt-0 mb-4">
+{% endblock %}
 {% block content %}
     <h1>Welcome, {{request.user.first_name}}</h1>
-<h2>Here is your diseases information</h2>
+    <h2>Here is your diseases information</h2>
 
     <form method="POST" action="#">
         {% csrf_token %}
