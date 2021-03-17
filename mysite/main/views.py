@@ -76,4 +76,4 @@ def view(response):
     return render(response, "main/view.html", {})
 
 def rerer(response):
-    return HttpResponse("hidsd")
+    return HttpResponse("hidsddsadasd")
