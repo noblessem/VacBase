@@ -1,0 +1,76 @@
+{% extends 'main/base.html' %}
+{% block title %}
+My Profile
+{% endblock %}
+{% block content %}
+    <h1>Welcome, {{request.user.first_name}}</h1>
+<h2>Here is your diseases information</h2>
+
+    <form method="POST" action="#">
+        {% csrf_token %}
+        {{form.as_p}}
+        <div class="form-group">
+            <button type="submit" name="find" value="disease" class="btn btn-success" style="margin-bottom:5px">Find</button>
+                <a href="/"><button type="submit" name="refresh" value="refresh" class="btn btn-success " style="margin-bottom:5px; margin-left:10px">Refresh</button></a>
+
+        </div>
+
+    </form>
+
+        <table class="table table-bordered table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">№</th>
+                        <th scope="col">Disease</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+
+            {% for disease in diseases %}
+            <tbody>
+
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{disease.disease_name}}</td>
+                    <td>{{disease.disease_date}}</td>
+            </tbody>
+
+
+            {% endfor %}
+
+                </table>
+<h2>Your vaccination list</h2>
+
+<table class="table table-bordered table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">№</th>
+                        <th scope="col">Vaccination</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+
+            {% for vac in vacs %}
+            <tbody>
+
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{vac.vac_name}}</td>
+                    <td>{{vac.vac_date}}</td>
+            </tbody>
+
+
+
+            {% endfor %}
+    </table>
+ <form method="POST" action="#">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <div class="form-group">
+                            <button type="submit" name="find" value="vacs" class="btn btn-success" style="margin-bottom:5px">Find</button>
+
+                        </div>
+
+                    </form>
+
+            {% endblock %}
+
+
