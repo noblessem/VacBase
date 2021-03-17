@@ -60,13 +60,12 @@
                 <div class="col-8">
 
                     {% if user.is_authenticated %}
-                    {% block header %}
-                    <h1 class="mt-2">My Site</h1>
-                    <hr class="mt-0 mb-4">
-                    {% endblock %}
+                        {% block header %}
+                            <h1 class="mt-2">My Site</h1>
+                            <hr class="mt-0 mb-4">
+                        {% endblock %}
                         {% block content %}
                         {% endblock %}
-                    {% endblock %}
                     {% else %}
                     {% block login %}
                         <p>Login <a href ="/login">here</a></p>
