@@ -7,4 +7,8 @@ class CreateNewList(forms.Form):
 
 
 class Find(forms.Form):
-    name = forms.CharField(label="Search  by name", max_length=120)
+    name = forms.CharField(label="Search  by name", max_length=120, required=None)
+
+
+class AddingForm(forms.Form):
+    name = forms.CharField(label="Add", max_length=120, required=None)

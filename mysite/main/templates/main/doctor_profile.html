@@ -1,0 +1,41 @@
+{% extends 'main/doctor_base.html' %}
+{% block header %}
+    <h1 class="mt-2">Doctor Profile</h1>
+    <hr class="mt-0 mb-4">
+{% endblock %}
+{% block content %}
+<h1>Welcome, {{request.user.first_name}}</h1>
+<h2>All patients</h2>
+
+<div class="container">
+    <form method="POST" action="patient/">
+        {% csrf_token %}
+
+     <table class="table table-bordered table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">№</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Check-It</th>
+
+
+                        </tr>
+                    </thead>
+                {% for user in users %}
+                <tbody>
+                    <tr>
+                        <th scope="row">{{forloop.counter }}</th>
+                        <td><a type="submit" href = "patient/" id = "{{user}}">{{user}}</a></td>
+                        <td><button class="btn btn-success" type="submit" name ="username" value = {{user}}>Send</button></td>
+
+                    </tr>
+                </tbody>
+
+
+                {% endfor %}
+
+          </table>
+</form>
+
+</div>
+{% endblock %}

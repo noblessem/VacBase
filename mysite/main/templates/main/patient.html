@@ -1,27 +1,16 @@
-{% extends 'main/base.html' %}
+{% extends 'main/doctor_base.html' %}
 {% block title %}
-My Profile
-{% endblock %}
-{% block header %}
-    <h1>Profile</h1>
-    <hr class="mt-0 mb-4">
+    Patient card
 {% endblock %}
 {% block content %}
-    <h1>Welcome, {{request.user.first_name}}</h1>
-    <h2>Here is your diseases information</h2>
+    <h1>Welcome, Dr.{{request.user.first_name}}</h1>
+    <h2>Here is information about {{patient.username}} diseases</h2>
 
     <form method="POST" action="#">
         {% csrf_token %}
-        {{form.as_p}}
-        <div class="form-group">
-            <button type="submit" name="find" value="disease" class="btn btn-success" style="margin-bottom:5px">Find</button>
-            <a href="/"><button name="refresh" value="refresh" class="btn btn-success " style="margin-bottom:5px; margin-left:10px">Refresh</button></a>
-
-        </div>
-
-    </form>
-
-        <table class="table table-bordered table-dark">
+        {{ form.as_p }}
+        <input type="hidden" readonly name ="username" value="{{patient.username}}">
+        <p><button style="margin-top:10px" type="submit" class="btn btn-success" name="add" value="disease" id = "{{patient.username}}">Add disease</button></p><table class="table table-bordered table-dark">
                 <thead>
                     <tr>
                         <th scope="col">№</th>
@@ -38,8 +27,6 @@ My Profile
                     <td>{{disease.disease_date}}</td>
                 </tr>
             </tbody>
-
-
             {% endfor %}
 
                 </table>
@@ -67,16 +54,8 @@ My Profile
 
             {% endfor %}
     </table>
- <form method="POST" action="#">
-                        {% csrf_token %}
-                        {{form.as_p}}
-                        <div class="form-group">
-                            <button type="submit" name="find" value="vacs" class="btn btn-success" style="margin-bottom:5px">Find</button>
-
-                        </div>
-
-                    </form>
-
-            {% endblock %}
+    </form>
 
 
+
+{% endblock %}
